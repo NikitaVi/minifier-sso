@@ -4,6 +4,7 @@ import (
 	"context"
 	impl "github.com/NikitaVi/minifier-sso/internal/api/auth"
 	"github.com/NikitaVi/minifier-sso/internal/config"
+	"github.com/NikitaVi/minifier-sso/internal/logger"
 	"github.com/NikitaVi/minifier-sso/internal/repo"
 	repository "github.com/NikitaVi/minifier-sso/internal/repo/auth"
 	"github.com/NikitaVi/minifier-sso/internal/service"
@@ -90,6 +91,7 @@ func (s *serviceProvider) DB(ctx context.Context, dsn string) *pgxpool.Pool {
 		if err != nil {
 			log.Fatal(err)
 		}
+		logger.Info("Database connection established")
 
 		s.db = pool
 	}

@@ -2,6 +2,7 @@ package auth
 
 import (
 	"context"
+	"fmt"
 	sq "github.com/Masterminds/squirrel"
 	"github.com/NikitaVi/minifier-sso/internal/repo/model"
 	"github.com/georgysavva/scany/pgxscan"
@@ -15,13 +16,14 @@ func (r *repository) IsPremium(ctx context.Context, userId string) (bool, error)
 
 	q, args, err := builder.ToSql()
 	if err != nil {
-		return false, err
+		return false, fmt.Errorf("Failed to build SQL: %w", err)
 	}
 
 	var data model.IsPremiumData
 	row, err := r.db.Query(ctx, q, args...)
+	defer row.Close()
 	if err != nil {
-		return false, err
+		return false, fmt.Errorf("Failed to execute SQL %s: %w", q, err)
 	}
 
 	err = pgxscan.ScanOne(&data, row)
@@ -29,7 +31,7 @@ func (r *repository) IsPremium(ctx context.Context, userId string) (bool, error)
 		if pgxscan.NotFound(err) {
 			return false, nil
 		}
-		return false, err
+		return false, fmt.Errorf("Failed to scan user with id=%s : %w", userId, err)
 	}
 
 	now := time.Now().UTC()

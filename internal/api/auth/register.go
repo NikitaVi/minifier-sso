@@ -2,6 +2,7 @@ package auth
 
 import (
 	"context"
+	"github.com/NikitaVi/minifier-sso/internal/logger"
 	"github.com/NikitaVi/minifier-sso/internal/model"
 	"github.com/NikitaVi/minifier-sso/pkg/auth_v1"
 )
@@ -11,6 +12,7 @@ func (i *Implementation) Register(ctx context.Context, req *auth_v1.RegisterRequ
 
 	userId, err := i.serv.Register(ctx, userCreds)
 	if err != nil {
+		logger.Error("Register request failed (login=%s): %v ", req.Login, err)
 		return nil, err
 	}
 

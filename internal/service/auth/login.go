@@ -2,6 +2,7 @@ package auth
 
 import (
 	"context"
+	"fmt"
 	"github.com/NikitaVi/minifier-sso/internal/lib/jwt"
 	"github.com/NikitaVi/minifier-sso/internal/model"
 	"golang.org/x/crypto/bcrypt"
@@ -15,7 +16,7 @@ func (s *serv) Login(ctx context.Context, creds *model.AuthCredentials) (string,
 	}
 
 	if err = bcrypt.CompareHashAndPassword([]byte(userData.Password), []byte(creds.Password)); err != nil {
-		return "", err
+		return "", fmt.Errorf("Failed to compare password: %w", err)
 	}
 
 	user := model.User{
@@ -26,7 +27,7 @@ func (s *serv) Login(ctx context.Context, creds *model.AuthCredentials) (string,
 
 	token, err := jwt.NewToken(user, s.jwt)
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("Failed to create token: %w", err)
 	}
 
 	return token, nil

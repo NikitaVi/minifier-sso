@@ -3,10 +3,10 @@ package app
 import (
 	"context"
 	"github.com/NikitaVi/minifier-sso/internal/config"
+	"github.com/NikitaVi/minifier-sso/internal/logger"
 	"github.com/NikitaVi/minifier-sso/pkg/auth_v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"log"
 	"net"
 	"sync"
 )
@@ -35,6 +35,7 @@ func (a *App) initApp(ctx context.Context) error {
 
 	for _, init := range inits {
 		if err := init(ctx); err != nil {
+			logger.Error("Failed to init: %v", err)
 			return err
 		}
 	}
@@ -85,15 +86,22 @@ func (a *App) Run(ctx context.Context) error {
 }
 
 func (a *App) runGRPC(context.Context) error {
-	log.Printf("Running GRPC server on: %s", a.serviceProvider.GRPCConfig().Address())
 
-	lis, err := net.Listen("tcp", a.serviceProvider.GRPCConfig().Address())
+	addr := a.serviceProvider.GRPCConfig().Address()
+
+	logger.Info("Running GRPC server on: %s", addr)
+
+	lis, err := net.Listen("tcp", addr)
 	if err != nil {
+		logger.Error("Failed to listen: %v", err)
 		return err
 	}
 
+	logger.Info("Listening on: %s", addr)
+
 	err = a.grpcServer.Serve(lis)
 	if err != nil {
+		logger.Error("Failed to server: %v", err)
 		return err
 	}
 

@@ -29,6 +29,7 @@ func NewApp(ctx context.Context) (*App, error) {
 func (a *App) initApp(ctx context.Context) error {
 	inits := []func(ctx2 context.Context) error{
 		a.initConfig,
+		a.initLogger,
 		a.initServiceProvider,
 		a.initGRPC,
 	}
@@ -64,6 +65,15 @@ func (a *App) initGRPC(ctx context.Context) error {
 
 func (a *App) initServiceProvider(ctx context.Context) error {
 	a.serviceProvider = newServiceProvider()
+	return nil
+}
+
+func (a *App) initLogger(ctx context.Context) error {
+	err := logger.Init()
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 

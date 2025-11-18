@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"github.com/NikitaVi/minifier-sso/internal/app"
-	"github.com/NikitaVi/minifier-sso/internal/logger"
 )
 
 func main() {
@@ -13,7 +12,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	logger.Init()
 
 	err = a.Run(ctx)
 	if err != nil {

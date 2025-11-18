@@ -4,6 +4,7 @@ go 1.24
 
 require (
 	github.com/Masterminds/squirrel v1.5.4 // indirect
+	github.com/NikitaVi/minifier-protos v0.0.0-20251114142407-ea0fe13ca6bd // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/georgysavva/scany v1.2.3 // indirect
 	github.com/golang-jwt/jwt/v5 v5.3.0 // indirect

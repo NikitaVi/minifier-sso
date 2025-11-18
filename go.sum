@@ -2,6 +2,12 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/Masterminds/semver/v3 v3.1.1/go.mod h1:VPu/7SZ7ePZ3QOrcuXROw5FAcLl4a0cBrbBpGY/8hQs=
 github.com/Masterminds/squirrel v1.5.4 h1:uUcX/aBc8O7Fg9kaISIUsHXdKuqehiXAMQTYX8afzqM=
 github.com/Masterminds/squirrel v1.5.4/go.mod h1:NNaOrjSoIDfDA40n7sr2tPNZRfjzjA400rg+riTZj10=
+github.com/NikitaVi/minifier-protos v0.0.0-20251114133134-647355e8ca88 h1:eVQL99QPqEpdQLCoCHbBzE9zjRhi5tCwk1h3GcZsQ1g=
+github.com/NikitaVi/minifier-protos v0.0.0-20251114133134-647355e8ca88/go.mod h1:4ZbVFa2Tu3FNVkgtr/sNeITYzIquNMUhZpeYFfAx9v4=
+github.com/NikitaVi/minifier-protos v0.0.0-20251114140227-56762fa8019e h1:G4IgA77+hKepvaWJtdfifsXcQRMmWho/gPu7AHKrWTU=
+github.com/NikitaVi/minifier-protos v0.0.0-20251114140227-56762fa8019e/go.mod h1:4ZbVFa2Tu3FNVkgtr/sNeITYzIquNMUhZpeYFfAx9v4=
+github.com/NikitaVi/minifier-protos v0.0.0-20251114142407-ea0fe13ca6bd h1:h3coIMeBwXKFJX+0ddghwAP17v0yqBU6kwGoQyk++6I=
+github.com/NikitaVi/minifier-protos v0.0.0-20251114142407-ea0fe13ca6bd/go.mod h1:4ZbVFa2Tu3FNVkgtr/sNeITYzIquNMUhZpeYFfAx9v4=
 github.com/cockroachdb/apd v1.1.0/go.mod h1:8Sl8LxpKi29FqWXR16WEFZRNSz3SoPzUzeMeY4+DwBQ=
 github.com/cockroachdb/cockroach-go/v2 v2.2.0/go.mod h1:u3MiKYGupPPjkn3ozknpMUpxPaNLTFWAya419/zv6eI=
 github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e/go.mod h1:F5haX7vjVVG0kc13fIWeqUViNPyEJxv/OmvnBo0Yme4=
